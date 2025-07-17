@@ -14,7 +14,7 @@ namespace RetailCorrector.Blueprint.Parts.Rows
         public BlockRowOut(string title, BlockBase block): base(block)
         {
             Title = title;
-            pin =  new(false, this);
+            pin =  new(this);
         }
 
         public override void Draw(Grid parent)

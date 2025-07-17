@@ -15,7 +15,7 @@ namespace RetailCorrector.Blueprint.Parts.Rows
         {
             Title = title;
             AllowedBlockTypes = allowed;
-            pin = new(true, this);
+            pin = new(this);
         }
 
         public override void Draw(Grid parent)

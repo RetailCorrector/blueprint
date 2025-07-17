@@ -7,15 +7,13 @@ namespace RetailCorrector.Blueprint.Parts
 {
     internal class BlockPin : FrameworkElement
     {
-        private readonly bool _isInput;
         private readonly BlockRowBase _parent;
 
-        public BlockPin(bool input, BlockRowBase parent)
+        public BlockPin(BlockRowBase parent)
         {
             VerticalAlignment = VerticalAlignment.Center;
             HorizontalAlignment = HorizontalAlignment.Center;
             Height = Width = 10;
-            _isInput = input;
             _parent = parent;
             AddVisualChild(new Ellipse() { Stroke = Brushes.Black });
         }
