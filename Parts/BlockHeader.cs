@@ -1,4 +1,5 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
+using RetailCorrector.Blueprint.Parts.Rows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -39,6 +40,25 @@ namespace RetailCorrector.Blueprint.Parts
                 var container = VisualTreeHelper.GetParent(_parent) as UIElement;
                 var mousePosition = e.GetPosition(container);
                 _parent.RenderTransform = new TranslateTransform(mousePosition.X - _positionInBlock.X, mousePosition.Y - _positionInBlock.Y);
+                UpdateConnections();
+            }
+        }
+
+        private void UpdateConnections()
+        {
+            foreach(var row in _parent.Rows)
+            {
+                switch (row)
+                {
+                    case BlockRowIn @in:
+                        @in.UpdateConnectionLine();
+                        break;
+                    case BlockRowOut @out:
+                        foreach(var @in in @out.Endpoints)
+                            @in.UpdateConnectionLine();
+                        break;
+                    default: break;
+                }
             }
         }
 
