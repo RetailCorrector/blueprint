@@ -1,11 +1,12 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace RetailCorrector.Blueprint.Parts
 {
-    internal class BlockPin : FrameworkElement
+    internal class BlockPin : Canvas
     {
         private readonly BlockRowBase _parent;
 
