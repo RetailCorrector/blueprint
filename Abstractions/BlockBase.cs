@@ -2,6 +2,7 @@
 using RetailCorrector.Blueprint.Parts.Rows;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace RetailCorrector.Blueprint.Abstractions
@@ -81,6 +82,14 @@ namespace RetailCorrector.Blueprint.Abstractions
             var row = new BlockRowCustom(element, this);
             Rows[index] = row;
             return row;
+        }
+
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            foreach(UIElement el in ((Panel)Parent).Children)
+                if(el is BlockBase) Panel.SetZIndex(el, 0);
+            Panel.SetZIndex(this, 1);
+            base.OnMouseDown(e);
         }
     }
 }
