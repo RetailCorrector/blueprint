@@ -6,9 +6,7 @@ namespace RetailCorrector.Blueprint.Operations
 {
     public class Alias : BlockBase
     {
-        protected override string Header { get; } = "Именование";
-
-        public Alias(): base(150, 4)
+        public Alias(): base("Сокращение", 150, 4)
         {
             var input = new TextBox
             {

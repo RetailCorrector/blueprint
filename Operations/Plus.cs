@@ -4,9 +4,7 @@ namespace RetailCorrector.Blueprint.Operations
 {
     public class Plus : BlockBase
     {
-        protected override string Header { get; } = "Плюс";
-
-        public Plus() : base(110, 3)
+        public Plus() : base("Плюс", 110, 3)
         {
             var a = AddInRow(0, "A");
             var b = AddInRow(1, "B");

@@ -8,9 +8,6 @@ namespace RetailCorrector.Blueprint.Statements
 {
     public class Select: StatementBlockBase
     {
-        protected override Brush BackgroundHeader { get; } = Brushes.Green;
-        protected override string Header { get; } = "Выборка";
-
         private readonly BlockRowIn Source;
         private readonly BlockRowIn Where;
         private readonly BlockRowIn Group;
@@ -19,7 +16,7 @@ namespace RetailCorrector.Blueprint.Statements
         private readonly BlockRowIn Order;
         private readonly BlockRowIn Limit;
 
-        public Select() : base(175, 8)
+        public Select() : base("Выборка", 175, 8, Brushes.Green)
         {
             Columns = AddInRow(0, "Столбцы");
             Source = AddInRow(1, "Источник");

@@ -12,13 +12,11 @@ namespace RetailCorrector.Blueprint.Abstractions
         public int X { get; set; }
         public int Y { get; set; }
 
-        protected virtual Brush BackgroundHeader { get; } = Brushes.Gray;
-        protected abstract string Header { get; }
         internal BlockRowBase[] Rows { get; private set; }
 
         protected Grid Child { get; }
 
-        public BlockBase(double width, int countRows)
+        public BlockBase(string header, double width, int countRows, Brush? bg = null)
         {
             (Height, Width) = (32 + countRows * 25, width);
             BorderBrush = Brushes.Black;
@@ -26,7 +24,7 @@ namespace RetailCorrector.Blueprint.Abstractions
             BorderThickness = new(1);
             Content = Child = new();
             Configure(Child.ColumnDefinitions);
-            AddHeader();
+            AddHeader(header, bg ?? Brushes.Gray);
             AddSplitter();
             Rows = new BlockRowBase[countRows];
         }
@@ -44,11 +42,11 @@ namespace RetailCorrector.Blueprint.Abstractions
             coll.Add(new() { Width = new(30) });
         }
 
-        private void AddHeader()
+        private void AddHeader(string header, Brush bg)
         {
             Child.RowDefinitions.Add(new() { Height = new(30) });
 
-            var canvas = new BlockHeader(Header, BackgroundHeader, this);
+            var canvas = new BlockHeader(header, bg, this);
             Grid.SetColumnSpan(canvas, 3);
             Child.Children.Add(canvas);
         }

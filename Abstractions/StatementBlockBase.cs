@@ -8,7 +8,8 @@ namespace RetailCorrector.Blueprint.Abstractions
     {
         private readonly static Geometry StepGeometry = Geometry.Parse("M7 6L18 15L7 24L7 6L18 15");
 
-        protected StatementBlockBase(double width, int countRows) : base(width, countRows)
+        protected StatementBlockBase(string header, double width, int countRows, Brush? bg = null) : 
+            base(header, width, countRows, bg)
         {
             var path = GenerateStepButton();
             Child.Children.Add(path);

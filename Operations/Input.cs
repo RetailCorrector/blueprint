@@ -6,9 +6,7 @@ namespace RetailCorrector.Blueprint.Operations
 {
     public class Input : BlockBase
     {
-        protected override string Header { get; } = "Строка";
-
-        public Input(): base(133, 2)
+        public Input(): base("Ввод", 133, 2)
         {
             var _input = new TextBox
             {

@@ -7,9 +7,7 @@ namespace RetailCorrector.Blueprint.Operations
 {
     public class DebugBlock : BlockBase
     {
-        protected override string Header { get; } = "DEBUG";
-
-        public DebugBlock(): base(100, 2)
+        public DebugBlock(): base("Отладка", 100, 2)
         {
             var @in = AddInRow(0, "Ввод");
             var btn = new Button
