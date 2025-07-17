@@ -1,6 +1,8 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
+using RetailCorrector.Blueprint.Parts.Rows;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -48,6 +50,22 @@ namespace RetailCorrector.Blueprint.Parts
         {
             _child.Stroke = Brushes.Black;
             Selected = this;
+        }
+
+        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            if (Selected is null) return;
+            Selected._child.Stroke = Brushes.Gray;
+            if (Selected == this || Selected._parent.GetType() == _parent.GetType() || 
+                Selected._parent.Block == _parent.Block)
+            {
+                Selected = null;
+                return;
+            }
+            var @in = (BlockRowIn)(_parent is BlockRowIn ? _parent : Selected._parent);
+            var @out = (BlockRowOut)(_parent is BlockRowOut ? _parent : Selected._parent);
+            @in.TryConnect(@out);
+            Selected = null;
         }
     }
 }
