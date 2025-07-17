@@ -13,25 +13,25 @@ namespace RetailCorrector.Blueprint.Abstractions
 
         protected virtual Brush BackgroundHeader { get; } = Brushes.Gray;
         protected abstract string Header { get; }
-        internal abstract BlockRowBase[] Rows { get; }
+        internal BlockRowBase[] Rows { get; private set; }
 
         protected Grid Child { get; }
 
-        public BlockBase(double width)
+        public BlockBase(double width, int countRows)
         {
-            (Height, Width) = (32, width);
+            (Height, Width) = (32 + countRows * 25, width);
             BorderBrush = Brushes.Black;
             Background = Brushes.White;
+            AddHeader();
+            AddSplitter();
             BorderThickness = new(1);
             Content = Child = new();
             Configure(Child.ColumnDefinitions);
+            Rows = new BlockRowBase[countRows];
         }
 
         protected void Draw()
         {
-            Height += Rows.Length * 25;
-            AddHeader();
-            AddSplitter();
             foreach (var pinout in Rows)
                 pinout.Draw(Child);
         }
@@ -62,8 +62,25 @@ namespace RetailCorrector.Blueprint.Abstractions
             Child.Children.Add(canvas);
         }
 
-        internal BlockRowIn In(string text, params Type[] allowed) => new(text, this, allowed);
-        internal BlockRowOut Out(string text, Func<string> valueGenerator) => new(text, this, valueGenerator);
-        internal BlockRowCustom Custom(FrameworkElement element) => new(element, this);
+        internal BlockRowIn AddInRow(int index, string text, params Type[] allowed)
+        {
+            var row = new BlockRowIn(text, this, allowed);
+            Rows[index] = row;
+            return row;
+        }
+
+        internal BlockRowOut AddOutRow(int index, string text, Func<string> valueGenerator)
+        {
+            var row = new BlockRowOut(text, this, valueGenerator);
+            Rows[index] = row;
+            return row;
+        }
+
+        internal BlockRowCustom AddCustomRow(int index, FrameworkElement element)
+        {
+            var row = new BlockRowCustom(element, this);
+            Rows[index] = row;
+            return row;
+        }
     }
 }

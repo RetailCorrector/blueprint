@@ -8,9 +8,7 @@ namespace RetailCorrector.Blueprint.Operations
     {
         protected override string Header { get; } = "Строка";
 
-        internal override BlockRowBase[] Rows { get; }
-
-        public Input(): base(133)
+        public Input(): base(133, 2)
         {
             var _input = new TextBox
             {
@@ -20,10 +18,8 @@ namespace RetailCorrector.Blueprint.Operations
             };
             Grid.SetColumnSpan(_input, 3);
 
-            Rows = [
-                Custom(_input),
-                Out("Вывод", () => _input.Text)
-            ];
+            AddCustomRow(0,_input);
+            AddOutRow(1,"Вывод", () => _input.Text);
             Draw();
         }
     }

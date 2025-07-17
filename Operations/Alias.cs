@@ -7,9 +7,8 @@ namespace RetailCorrector.Blueprint.Operations
     public class Alias : BlockBase
     {
         protected override string Header { get; } = "Именование";
-        internal override BlockRowBase[] Rows { get; }
 
-        public Alias(): base(150)
+        public Alias(): base(150, 4)
         {
             var input = new TextBox
             {
@@ -19,13 +18,11 @@ namespace RetailCorrector.Blueprint.Operations
             };
             Grid.SetColumnSpan(input, 3);
 
-            var @in = In("Исходное");
+            var @in = AddInRow(0,"Исходное");
+            AddCustomRow(1, input);
+            AddOutRow(2, "Регистрация", () => $"({@in.Endpoint!.Value()}) AS {input.Text}");
+            AddOutRow(3, "Название", () => input.Text);
 
-            Rows = [
-                @in, Custom(input),
-                Out("Регистрация", () => $"({@in.Endpoint!.Value()}) AS {input.Text}"),
-                Out("Название", () => input.Text)
-            ];
             Draw();
         }
     }

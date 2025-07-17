@@ -19,22 +19,16 @@ namespace RetailCorrector.Blueprint.Statements
         private readonly BlockRowIn Order;
         private readonly BlockRowIn Limit;
 
-        internal override BlockRowBase[] Rows { get; }
-
-        public Select() : base(175)
+        public Select() : base(175, 8)
         {
-            Source = In("Источник");
-            Where = In("Фильтрация строк");
-            Group = In("Группировка");
-            Having = In("Фильтрация групп");
-            Columns = In("Столбцы");
-            Order = In("Сортировка");
-            Limit = In("Количество строк", typeof(Input));
-
-            Rows = [
-                Source, Where, Group, Having, Columns, Order, Limit,
-                Out("Вывод", ToString),
-            ];
+            Columns = AddInRow(0, "Столбцы");
+            Source = AddInRow(1, "Источник");
+            Where = AddInRow(2, "Фильтрация строк");
+            Group = AddInRow(3, "Группировка");
+            Having = AddInRow(4, "Фильтрация групп");
+            Order = AddInRow(5, "Сортировка");
+            Limit = AddInRow(6, "Количество строк", typeof(Input));
+            AddOutRow(7, "Вывод", ToString);
             Draw();
         }
 

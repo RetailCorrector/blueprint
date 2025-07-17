@@ -9,11 +9,9 @@ namespace RetailCorrector.Blueprint.Operations
     {
         protected override string Header { get; } = "DEBUG";
 
-        internal override BlockRowBase[] Rows { get; }
-
-        public DebugBlock(): base(100)
+        public DebugBlock(): base(100, 2)
         {
-            var @in = In("Ввод");
+            var @in = AddInRow(0, "Ввод");
             var btn = new Button
             {
                 Content = "Print",
@@ -28,8 +26,7 @@ namespace RetailCorrector.Blueprint.Operations
                 Debug.WriteLine("");
             };
             Grid.SetColumnSpan(btn, 3);
-
-            Rows = [ @in, Custom(btn) ];
+            AddCustomRow(1, btn);
             Draw();
         }
     }

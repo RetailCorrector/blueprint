@@ -6,15 +6,11 @@ namespace RetailCorrector.Blueprint.Operations
     {
         protected override string Header { get; } = "Плюс";
 
-        internal override BlockRowBase[] Rows { get; }
-
-        public Plus(): base(110)
+        public Plus() : base(110, 3)
         {
-            var a = In("A");
-            var b = In("B");
-            Rows = [a, b,
-                Out("Сумма", () => $"{a.Endpoint?.Value()} + {b.Endpoint?.Value()}"),
-            ];
+            var a = AddInRow(0, "A");
+            var b = AddInRow(1, "B");
+            AddOutRow(2, "Сумма", () => $"{a.Endpoint?.Value()} + {b.Endpoint?.Value()}")
             Draw();
         }
     }
