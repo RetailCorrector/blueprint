@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace RetailCorrector.Blueprint.Abstractions
 {
-    public abstract class BlockBase : UserControl
+    public abstract partial class BlockBase : UserControl
     {
         public int X { get; set; }
         public int Y { get; set; }

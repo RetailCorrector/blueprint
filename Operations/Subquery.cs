@@ -8,7 +8,7 @@ namespace RetailCorrector.Blueprint.Operations
 
         public Subquery(): base(100, 2)
         {
-            var @in = AddInRow(0, "Запрос", typeof(StatementBlockBase));
+            var @in = AddInRow(0, "Запрос", Statements);
             AddOutRow(1, "Результат", () => $"({@in.Endpoint!.Value()})");
             Draw();
         }
