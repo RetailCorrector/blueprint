@@ -10,18 +10,28 @@ namespace RetailCorrector.Blueprint.Statements
         protected override Brush BackgroundHeader { get; } = Brushes.Green;
         protected override string Header { get; } = "Выборка";
 
+        private readonly BlockRowIn Source;
+        private readonly BlockRowIn Where;
+        private readonly BlockRowIn Group;
+        private readonly BlockRowIn Having;
+        private readonly BlockRowIn Columns;
+        private readonly BlockRowIn Order;
+        private readonly BlockRowIn Limit;
+
         internal override BlockRowBase[] Rows { get; }
 
         public Select() : base(175)
         {
+            Source = new BlockRowIn("Источник", this);
+            Where = new BlockRowIn("Фильтрация строк", this);
+            Group = new BlockRowIn("Группировка", this);
+            Having = new BlockRowIn("Фильтрация групп", this);
+            Columns = new BlockRowIn("Столбцы", this);
+            Order = new BlockRowIn("Сортировка", this);
+            Limit = new BlockRowIn("Количество строк", this, typeof(Input));
+
             Rows = [
-                new BlockRowIn("Источник", this),
-                new BlockRowIn("Фильтрация строк", this),
-                new BlockRowIn("Группировка", this),
-                new BlockRowIn("Фильтрация групп", this),
-                new BlockRowIn("Столбцы", this),
-                new BlockRowIn("Сортировка", this),
-                new BlockRowIn("Количество строк", this, typeof(Input)),
+                Source, Where, Group, Having, Columns, Order, Limit,
                 new BlockRowOut("Вывод", this),
             ];
             Draw();
