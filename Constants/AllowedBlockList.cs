@@ -1,7 +1,9 @@
-﻿namespace RetailCorrector.Blueprint.Abstractions
+﻿using RetailCorrector.Blueprint.Blocks;
+
+namespace RetailCorrector.Blueprint.Abstractions
 {
     public partial class BlockBase
     {
-        public readonly static Type[] Statements = [typeof(Statements.Select)];
+        public readonly static Type[] Statements = [typeof(Select)];
     }
 }

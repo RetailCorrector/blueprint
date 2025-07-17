@@ -1,10 +1,9 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
-using RetailCorrector.Blueprint.Operations;
 using RetailCorrector.Blueprint.Parts.Rows;
 using System.Text;
 using System.Windows.Media;
 
-namespace RetailCorrector.Blueprint.Statements
+namespace RetailCorrector.Blueprint.Blocks
 {
     public class Select: StatementBlockBase
     {

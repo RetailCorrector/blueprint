@@ -1,6 +1,6 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
 
-namespace RetailCorrector.Blueprint.Operations
+namespace RetailCorrector.Blueprint.Blocks
 {
     public class Plus : BlockBase
     {

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace RetailCorrector.Blueprint.Operations
+namespace RetailCorrector.Blueprint.Blocks
 {
     public class Alias : BlockBase
     {
