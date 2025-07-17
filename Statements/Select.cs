@@ -54,7 +54,6 @@ namespace RetailCorrector.Blueprint.Statements
                 if (Limit.Endpoint is not null)
                     builder.Append($" LIMIT {Limit.Endpoint.Value()}");
             }
-            builder.Append(';');
             return builder.ToString();
         }
     }
