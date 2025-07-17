@@ -11,10 +11,10 @@ namespace RetailCorrector.Blueprint.Operations
 
         public Plus(): base(110)
         {
-            Rows = [
-                new BlockRowIn("A", this),
-                new BlockRowIn("B", this),
-                new BlockRowOut("Сумма", this),
+            var a = new BlockRowIn("A", this);
+            var b = new BlockRowIn("B", this);
+            Rows = [a, b,
+                new BlockRowOut("Сумма", this, () => $"{a.Endpoint?.Value()} + {b.Endpoint?.Value()}"),
             ];
             Draw();
         }
