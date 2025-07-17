@@ -1,5 +1,4 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,17 +11,12 @@ namespace RetailCorrector.Blueprint.Operations
             var @in = AddInRow(0, "Ввод");
             var btn = new Button
             {
-                Content = "Print",
+                Content = "Отобразить",
                 Width = 80,
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
             };
-            btn.Click += (_, _) =>
-            {
-                Debug.WriteLine("");
-                Debug.WriteLine(@in.Endpoint?.Value() ?? "ВВОД ПУСТ");
-                Debug.WriteLine("");
-            };
+            btn.Click += (_, _) => MessageBox.Show(@in.Endpoint?.Value() ?? "ВВОД ПУСТ");
             Grid.SetColumnSpan(btn, 3);
             AddCustomRow(1, btn);
             Draw();
