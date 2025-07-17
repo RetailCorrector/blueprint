@@ -34,5 +34,14 @@ namespace RetailCorrector.Blueprint.Parts.Rows
             Grid.SetColumn(label, 1);
             parent.Children.Add(label);
         }
+
+        public void UpdateConnectionLine()
+        {
+            if (Endpoint is null) return;
+            _connection.X1 = Pin.X;
+            _connection.Y1 = Pin.Y;
+            _connection.X2 = Endpoint.Pin.X;
+            _connection.Y2 = Endpoint.Pin.Y;
+        }
     }
 }
