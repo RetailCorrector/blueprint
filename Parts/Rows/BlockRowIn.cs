@@ -35,6 +35,17 @@ namespace RetailCorrector.Blueprint.Parts.Rows
             parent.Children.Add(label);
         }
 
+        public void TryConnect(BlockRowOut @out)
+        {
+            if(Endpoint is not null) return;
+            if (AllowedBlockTypes is not null && AllowedBlockTypes.Length > 0 &&
+                !AllowedBlockTypes.Contains(@out.Block.GetType())) return;
+            Endpoint = @out;
+            @out.Endpoints.Add(this);
+            UpdateConnectionLine();
+            ((Canvas)Block.Parent).Children.Add(_connection);
+        }
+
         public void UpdateConnectionLine()
         {
             if (Endpoint is null) return;
