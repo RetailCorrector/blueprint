@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace RetailCorrector.Blueprint
+namespace RetailCorrector.Blueprint.Parts
 {
     public class BlockHeader : DockPanel
     {
