@@ -9,14 +9,15 @@ namespace RetailCorrector.Blueprint.Parts
     internal class BlockPin : Canvas
     {
         private readonly BlockRowBase _parent;
+        private readonly Ellipse _child = new() { Stroke = Brushes.Gray, Fill = Brushes.White };
 
         public BlockPin(BlockRowBase parent)
         {
             VerticalAlignment = VerticalAlignment.Center;
             HorizontalAlignment = HorizontalAlignment.Center;
-            Height = Width = 10;
+            _child.Height = _child.Width = Height = Width = 10;
             _parent = parent;
-            AddVisualChild(new Ellipse() { Stroke = Brushes.Black });
+            Children.Add(_child);
         }
     }
 }
