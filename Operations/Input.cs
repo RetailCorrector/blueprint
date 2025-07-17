@@ -12,7 +12,7 @@ namespace RetailCorrector.Blueprint.Operations
 
         public string Value { get; set; } = "";
 
-        protected override BlockRowBase[] Pinouts { get; }
+        internal override BlockRowBase[] Rows { get; }
 
         public Input(): base(133)
         {
@@ -27,7 +27,7 @@ namespace RetailCorrector.Blueprint.Operations
             Grid.SetColumnSpan(_input, 3);
             var input = new BlockRowCustom(_input, this);
 
-            Pinouts = [input, @out];
+            Rows = [input, @out];
             Draw();
         }
     }

@@ -7,11 +7,11 @@ namespace RetailCorrector.Blueprint.Operations
     {
         protected override string Header { get; } = "Плюс";
 
-        protected override BlockRowBase[] Pinouts { get; }
+        internal override BlockRowBase[] Rows { get; }
 
         public Plus(): base(110)
         {
-            Pinouts = [
+            Rows = [
                 new BlockRowIn("A", this),
                 new BlockRowIn("B", this),
                 new BlockRowOut("Сумма", this),

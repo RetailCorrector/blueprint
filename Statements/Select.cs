@@ -10,11 +10,11 @@ namespace RetailCorrector.Blueprint.Statements
         protected override Brush BackgroundHeader { get; } = Brushes.Green;
         protected override string Header { get; } = "Выборка";
 
-        protected override BlockRowBase[] Pinouts { get; }
+        internal override BlockRowBase[] Rows { get; }
 
         public Select() : base(175)
         {
-            Pinouts = [
+            Rows = [
                 new BlockRowIn("Источник", this),
                 new BlockRowIn("Фильтрация строк", this),
                 new BlockRowIn("Группировка", this),

@@ -12,7 +12,7 @@ namespace RetailCorrector.Blueprint.Abstractions
 
         protected virtual Brush BackgroundHeader { get; } = Brushes.Gray;
         protected abstract string Header { get; }
-        protected abstract BlockRowBase[] Pinouts { get; }
+        internal abstract BlockRowBase[] Rows { get; }
 
         protected Grid Child { get; }
 
@@ -28,10 +28,10 @@ namespace RetailCorrector.Blueprint.Abstractions
 
         protected void Draw()
         {
-            Height += Pinouts.Length * 25;
+            Height += Rows.Length * 25;
             AddHeader();
             AddSplitter();
-            foreach (var pinout in Pinouts)
+            foreach (var pinout in Rows)
                 pinout.Draw(Child);
         }
 
