@@ -1,6 +1,8 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace RetailCorrector.Blueprint.Parts.Rows
 {
@@ -10,6 +12,7 @@ namespace RetailCorrector.Blueprint.Parts.Rows
         private Type[] AllowedBlockTypes { get; }
         public BlockRowOut? Endpoint { get; private set; } = null;
         public readonly BlockPin Pin;
+        private Line _connection = new() { Stroke = Brushes.Black };
 
         public BlockRowIn(string title, BlockBase block, params Type[] allowed): base(block)
         {
