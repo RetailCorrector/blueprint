@@ -23,17 +23,17 @@ namespace RetailCorrector.Blueprint.Statements
 
         public Select() : base(175)
         {
-            Source = new BlockRowIn("Источник", this);
-            Where = new BlockRowIn("Фильтрация строк", this);
-            Group = new BlockRowIn("Группировка", this);
-            Having = new BlockRowIn("Фильтрация групп", this);
-            Columns = new BlockRowIn("Столбцы", this);
-            Order = new BlockRowIn("Сортировка", this);
-            Limit = new BlockRowIn("Количество строк", this, typeof(Input));
+            Source = In("Источник");
+            Where = In("Фильтрация строк");
+            Group = In("Группировка");
+            Having = In("Фильтрация групп");
+            Columns = In("Столбцы");
+            Order = In("Сортировка");
+            Limit = In("Количество строк", typeof(Input));
 
             Rows = [
                 Source, Where, Group, Having, Columns, Order, Limit,
-                new BlockRowOut("Вывод", this, ToString),
+                Out("Вывод", ToString),
             ];
             Draw();
         }

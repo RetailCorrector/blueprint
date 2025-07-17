@@ -1,5 +1,4 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
-using RetailCorrector.Blueprint.Parts.Rows;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,7 +13,7 @@ namespace RetailCorrector.Blueprint.Operations
 
         public DebugBlock(): base(100)
         {
-            var @in = new BlockRowIn("Ввод", this);
+            var @in = In("Ввод");
             var btn = new Button
             {
                 Content = "Print",
@@ -30,7 +29,7 @@ namespace RetailCorrector.Blueprint.Operations
             };
             Grid.SetColumnSpan(btn, 3);
 
-            Rows = [ @in, new BlockRowCustom(btn, this) ];
+            Rows = [ @in, Custom(btn) ];
             Draw();
         }
     }

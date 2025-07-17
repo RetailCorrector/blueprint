@@ -1,5 +1,4 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
-using RetailCorrector.Blueprint.Parts.Rows;
 
 namespace RetailCorrector.Blueprint.Operations
 {
@@ -11,10 +10,10 @@ namespace RetailCorrector.Blueprint.Operations
 
         public Plus(): base(110)
         {
-            var a = new BlockRowIn("A", this);
-            var b = new BlockRowIn("B", this);
+            var a = In("A");
+            var b = In("B");
             Rows = [a, b,
-                new BlockRowOut("Сумма", this, () => $"{a.Endpoint?.Value()} + {b.Endpoint?.Value()}"),
+                Out("Сумма", () => $"{a.Endpoint?.Value()} + {b.Endpoint?.Value()}"),
             ];
             Draw();
         }

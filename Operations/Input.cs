@@ -1,5 +1,4 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
-using RetailCorrector.Blueprint.Parts.Rows;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,8 +21,8 @@ namespace RetailCorrector.Blueprint.Operations
             Grid.SetColumnSpan(_input, 3);
 
             Rows = [
-                new BlockRowCustom(_input, this),
-                new BlockRowOut("Вывод", this, () => _input.Text)
+                Custom(_input),
+                Out("Вывод", () => _input.Text)
             ];
             Draw();
         }

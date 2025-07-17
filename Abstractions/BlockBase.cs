@@ -1,4 +1,5 @@
 ﻿using RetailCorrector.Blueprint.Parts;
+using RetailCorrector.Blueprint.Parts.Rows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -60,5 +61,9 @@ namespace RetailCorrector.Blueprint.Abstractions
             Grid.SetColumnSpan(canvas, 3);
             Child.Children.Add(canvas);
         }
+
+        internal BlockRowIn In(string text, params Type[] allowed) => new(text, this, allowed);
+        internal BlockRowOut Out(string text, Func<string> valueGenerator) => new(text, this, valueGenerator);
+        internal BlockRowCustom Custom(FrameworkElement element) => new(element, this);
     }
 }
