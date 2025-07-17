@@ -23,11 +23,11 @@ namespace RetailCorrector.Blueprint.Abstractions
             (Height, Width) = (32 + countRows * 25, width);
             BorderBrush = Brushes.Black;
             Background = Brushes.White;
-            AddHeader();
-            AddSplitter();
             BorderThickness = new(1);
             Content = Child = new();
             Configure(Child.ColumnDefinitions);
+            AddHeader();
+            AddSplitter();
             Rows = new BlockRowBase[countRows];
         }
 
