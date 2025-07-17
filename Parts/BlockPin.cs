@@ -11,6 +11,28 @@ namespace RetailCorrector.Blueprint.Parts
         private readonly BlockRowBase _parent;
         private readonly Ellipse _child = new() { Stroke = Brushes.Gray, Fill = Brushes.White };
 
+        public double X
+        {
+            get
+            {
+                var xBlock = _parent.Block.RenderTransform.Value.OffsetX;
+                return xBlock + (_parent is BlockRowIn ? 15 : _parent.Block.Width - 15);
+            }
+        }
+        public double Y
+        {
+            get
+            {
+                var y = 45 + _parent.Block.RenderTransform.Value.OffsetY;
+                int index = 0;
+                var arr = _parent.Block.Rows;
+                for (; index < arr.Length; index++)
+                    if (arr[index] == _parent)
+                        break;
+                return y + index * 25;
+            }
+        }
+
         public BlockPin(BlockRowBase parent)
         {
             VerticalAlignment = VerticalAlignment.Center;
