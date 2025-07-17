@@ -12,7 +12,7 @@ namespace RetailCorrector.Blueprint.Abstractions
 
         protected virtual Brush BackgroundHeader { get; } = Brushes.Gray;
         protected abstract string Header { get; }
-        protected abstract BlockPinoutBase[] Pinouts { get; }
+        protected abstract BlockRowBase[] Pinouts { get; }
 
         protected Grid Child { get; }
 

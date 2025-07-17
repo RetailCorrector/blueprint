@@ -1,5 +1,5 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
-using RetailCorrector.Blueprint.Pinouts;
+using RetailCorrector.Blueprint.Parts.Rows;
 
 namespace RetailCorrector.Blueprint.Operations
 {
@@ -7,14 +7,14 @@ namespace RetailCorrector.Blueprint.Operations
     {
         protected override string Header { get; } = "Плюс";
 
-        protected override BlockPinoutBase[] Pinouts { get; }
+        protected override BlockRowBase[] Pinouts { get; }
 
         public Plus(): base(110)
         {
             Pinouts = [
-                new BlockPinoutIn("A", this),
-                new BlockPinoutIn("B", this),
-                new BlockPinoutOut("Сумма", this),
+                new BlockRowIn("A", this),
+                new BlockRowIn("B", this),
+                new BlockRowOut("Сумма", this),
             ];
             Draw();
         }

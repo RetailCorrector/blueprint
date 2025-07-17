@@ -1,6 +1,6 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
 using RetailCorrector.Blueprint.Operations;
-using RetailCorrector.Blueprint.Pinouts;
+using RetailCorrector.Blueprint.Parts.Rows;
 using System.Windows.Media;
 
 namespace RetailCorrector.Blueprint.Statements
@@ -10,19 +10,19 @@ namespace RetailCorrector.Blueprint.Statements
         protected override Brush BackgroundHeader { get; } = Brushes.Green;
         protected override string Header { get; } = "Выборка";
 
-        protected override BlockPinoutBase[] Pinouts { get; }
+        protected override BlockRowBase[] Pinouts { get; }
 
         public Select() : base(175)
         {
             Pinouts = [
-                new BlockPinoutIn("Источник", this),
-                new BlockPinoutIn("Фильтрация строк", this),
-                new BlockPinoutIn("Группировка", this),
-                new BlockPinoutIn("Фильтрация групп", this),
-                new BlockPinoutIn("Столбцы", this),
-                new BlockPinoutIn("Сортировка", this),
-                new BlockPinoutIn("Количество строк", this, typeof(Input)),
-                new BlockPinoutOut("Вывод", this),
+                new BlockRowIn("Источник", this),
+                new BlockRowIn("Фильтрация строк", this),
+                new BlockRowIn("Группировка", this),
+                new BlockRowIn("Фильтрация групп", this),
+                new BlockRowIn("Столбцы", this),
+                new BlockRowIn("Сортировка", this),
+                new BlockRowIn("Количество строк", this, typeof(Input)),
+                new BlockRowOut("Вывод", this),
             ];
             Draw();
         }

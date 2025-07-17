@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace RetailCorrector.Blueprint.Parts.Pinouts
+namespace RetailCorrector.Blueprint.Parts.Rows
 {
-    public class BlockPinoutCustom(FrameworkElement element, BlockBase block) : BlockPinoutBase(block)
+    public class BlockRowCustom(FrameworkElement element, BlockBase block) : BlockRowBase(block)
     {
         public override void Draw(Grid parent)
         {

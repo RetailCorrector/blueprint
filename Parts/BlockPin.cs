@@ -8,9 +8,9 @@ namespace RetailCorrector.Blueprint.Parts
     internal class BlockPin : FrameworkElement
     {
         private readonly bool _isInput;
-        private readonly BlockPinoutBase _parent;
+        private readonly BlockRowBase _parent;
 
-        public BlockPin(bool input, BlockPinoutBase parent)
+        public BlockPin(bool input, BlockRowBase parent)
         {
             VerticalAlignment = VerticalAlignment.Center;
             HorizontalAlignment = HorizontalAlignment.Center;

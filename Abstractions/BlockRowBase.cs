@@ -5,7 +5,7 @@ using System.Windows.Shapes;
 
 namespace RetailCorrector.Blueprint.Abstractions
 {
-    public abstract class BlockPinoutBase(BlockBase block)
+    public abstract class BlockRowBase(BlockBase block)
     {
         public BlockBase Block { get; } = block;
 

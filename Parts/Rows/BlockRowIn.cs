@@ -2,13 +2,13 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace RetailCorrector.Blueprint.Parts.Pinouts
+namespace RetailCorrector.Blueprint.Parts.Rows
 {
-    internal class BlockPinoutIn(string title, BlockBase block, params Type[] allowed) : BlockPinoutBase(block)
+    internal class BlockRowIn(string title, BlockBase block, params Type[] allowed) : BlockRowBase(block)
     {
         public string Title { get; } = title;
         private Type[] AllowedBlockTypes { get; } = allowed;
-        public BlockPinoutOut? Connection { get; } = null;
+        public BlockRowOut? Connection { get; } = null;
 
         public override void Draw(Grid parent)
         {
