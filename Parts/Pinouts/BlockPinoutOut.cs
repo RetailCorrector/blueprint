@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace RetailCorrector.Blueprint.Pinouts
+namespace RetailCorrector.Blueprint.Parts.Pinouts
 {
     internal class BlockPinoutOut(string title, BlockBase block) : BlockPinoutBase(block)
     {

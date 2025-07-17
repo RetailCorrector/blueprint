@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace RetailCorrector.Blueprint.Pinouts
+namespace RetailCorrector.Blueprint.Parts.Pinouts
 {
     public class BlockPinoutCustom(FrameworkElement element, BlockBase block) : BlockPinoutBase(block)
     {
