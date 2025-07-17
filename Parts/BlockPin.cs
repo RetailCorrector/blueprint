@@ -68,5 +68,12 @@ namespace RetailCorrector.Blueprint.Parts
             @in.TryConnect(@out);
             Selected = null;
         }
+
+        protected override void OnMouseRightButtonDown(MouseButtonEventArgs e)
+        {
+            if (IsInput) ((BlockRowIn)_parent).Disconnect();
+            else ((BlockRowOut)_parent).DisconnectAll();
+            base.OnMouseRightButtonDown(e);
+        }
     }
 }

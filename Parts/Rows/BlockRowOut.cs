@@ -31,5 +31,11 @@ namespace RetailCorrector.Blueprint.Parts.Rows
             Grid.SetColumn(label, 1);
             parent.Children.Add(label);
         }
+
+        public void DisconnectAll()
+        {
+            while(Endpoints.Count > 0) 
+                Endpoints[0].Disconnect();
+        }
     }
 }

@@ -54,5 +54,13 @@ namespace RetailCorrector.Blueprint.Parts.Rows
             _connection.X2 = Endpoint.Pin.X;
             _connection.Y2 = Endpoint.Pin.Y;
         }
+
+        public void Disconnect()
+        {
+            ((Canvas)Block.Parent).Children.Remove(_connection);
+            if (Endpoint is null) return;
+            Endpoint.Endpoints.Remove(this);
+            Endpoint = null;
+        }
     }
 }
