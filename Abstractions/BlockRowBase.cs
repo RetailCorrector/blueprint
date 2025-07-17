@@ -1,7 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace RetailCorrector.Blueprint.Abstractions
 {
@@ -10,15 +8,6 @@ namespace RetailCorrector.Blueprint.Abstractions
         public BlockBase Block { get; } = block;
 
         public abstract void Draw(Grid parent);
-
-        protected static Ellipse GenerateEllipse() => new()
-        {
-            VerticalAlignment = VerticalAlignment.Center,
-            HorizontalAlignment = HorizontalAlignment.Center,
-            Height = 10,
-            Width = 10,
-            Stroke = Brushes.Black,
-        };
 
         protected static TextBlock GenerateLabel(string text, HorizontalAlignment horiz) => new()
         {

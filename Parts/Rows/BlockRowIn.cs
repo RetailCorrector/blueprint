@@ -4,20 +4,27 @@ using System.Windows.Controls;
 
 namespace RetailCorrector.Blueprint.Parts.Rows
 {
-    internal class BlockRowIn(string title, BlockBase block, params Type[] allowed) : BlockRowBase(block)
+    internal class BlockRowIn : BlockRowBase
     {
-        public string Title { get; } = title;
-        private Type[] AllowedBlockTypes { get; } = allowed;
+        public string Title { get; }
+        private Type[] AllowedBlockTypes { get; }
         public BlockRowOut? Connection { get; } = null;
+        private readonly BlockPin pin;
+
+        public BlockRowIn(string title, BlockBase block, params Type[] allowed): base(block)
+        {
+            Title = title;
+            AllowedBlockTypes = allowed;
+            pin = new(true, this);
+        }
 
         public override void Draw(Grid parent)
         {
             parent.RowDefinitions.Add(new() { Height = new(25) });
             var index = parent.RowDefinitions.Count - 1;
 
-            var e = GenerateEllipse();
-            Grid.SetRow(e, index);
-            parent.Children.Add(e);
+            Grid.SetRow(pin, index);
+            parent.Children.Add(pin);
 
             var label = GenerateLabel(Title, HorizontalAlignment.Left);
             Grid.SetRow(label, index);
