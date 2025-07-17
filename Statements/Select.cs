@@ -1,6 +1,7 @@
 ﻿using RetailCorrector.Blueprint.Abstractions;
 using RetailCorrector.Blueprint.Operations;
 using RetailCorrector.Blueprint.Parts.Rows;
+using System.Text;
 using System.Windows.Media;
 
 namespace RetailCorrector.Blueprint.Statements
@@ -32,35 +33,35 @@ namespace RetailCorrector.Blueprint.Statements
 
             Rows = [
                 Source, Where, Group, Having, Columns, Order, Limit,
-                new BlockRowOut("Вывод", this),
+                new BlockRowOut("Вывод", this, ToString),
             ];
             Draw();
         }
 
-        /*public override string ToString()
+        public override string ToString()
         {
-            if (InputChildren[4] is null)
+            if (Columns.Endpoint is null)
                 throw new ArgumentException("Отсутствует информация об столбцах");
             var builder = new StringBuilder();
-            builder.Append($"SELECT {InputChildren[4]}");
-            if (InputChildren[0] is not null)
+            builder.Append($"SELECT {Columns.Endpoint.Value()}");
+            if (Source.Endpoint is not null)
             {
-                builder.Append($" FROM {InputChildren[0]}");
-                if (InputChildren[1] is not null)
-                    builder.Append($" WHERE {InputChildren[1]}");
-                if (InputChildren[2] is not null)
+                builder.Append($" FROM {Source.Endpoint.Value()}");
+                if (Where.Endpoint is not null)
+                    builder.Append($" WHERE {Where.Endpoint.Value()}");
+                if (Group.Endpoint is not null)
                 {
-                    builder.Append($" GROUP BY {InputChildren[2]}");
-                    if (InputChildren[3] is not null)
-                        builder.Append($" HAVING {InputChildren[3]}");
+                    builder.Append($" GROUP BY {Group.Endpoint.Value()}");
+                    if (Having.Endpoint is not null)
+                        builder.Append($" HAVING {Having.Endpoint.Value()}");
                 }
-                if (InputChildren[5] is not null)
-                    builder.Append($" ORDER BY {InputChildren[5]}");
-                if (InputChildren[6] is not null)
-                    builder.Append($" LIMIT {InputChildren[6]}");
+                if (Order.Endpoint is not null)
+                    builder.Append($" ORDER BY {Order.Endpoint.Value()}");
+                if (Limit.Endpoint is not null)
+                    builder.Append($" LIMIT {Limit.Endpoint.Value()}");
             }
             builder.Append(';');
             return builder.ToString();
-        }*/
+        }
     }
 }
