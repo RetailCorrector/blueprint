@@ -8,13 +8,14 @@ namespace RetailCorrector.Blueprint.Parts.Rows
     {
         public string Title { get; }
         public List<BlockRowIn> Endpoints { get; set; } = [];
-        public string Value { get; set; } = "";
+        public Func<string> Value { get; }
         public readonly BlockPin Pin;
 
-        public BlockRowOut(string title, BlockBase block): base(block)
+        public BlockRowOut(string title, BlockBase block, Func<string> value): base(block)
         {
             Title = title;
             Pin =  new(this);
+            Value = value;
         }
 
         public override void Draw(Grid parent)
