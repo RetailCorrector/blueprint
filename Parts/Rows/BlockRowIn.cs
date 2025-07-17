@@ -9,13 +9,13 @@ namespace RetailCorrector.Blueprint.Parts.Rows
         public string Title { get; }
         private Type[] AllowedBlockTypes { get; }
         public BlockRowOut? Connection { get; } = null;
-        private readonly BlockPin pin;
+        public readonly BlockPin Pin;
 
         public BlockRowIn(string title, BlockBase block, params Type[] allowed): base(block)
         {
             Title = title;
             AllowedBlockTypes = allowed;
-            pin = new(this);
+            Pin = new(this);
         }
 
         public override void Draw(Grid parent)
@@ -23,8 +23,8 @@ namespace RetailCorrector.Blueprint.Parts.Rows
             parent.RowDefinitions.Add(new() { Height = new(25) });
             var index = parent.RowDefinitions.Count - 1;
 
-            Grid.SetRow(pin, index);
-            parent.Children.Add(pin);
+            Grid.SetRow(Pin, index);
+            parent.Children.Add(Pin);
 
             var label = GenerateLabel(Title, HorizontalAlignment.Left);
             Grid.SetRow(label, index);

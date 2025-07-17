@@ -8,6 +8,8 @@ namespace RetailCorrector.Blueprint.Parts
 {
     internal class BlockPin : Canvas
     {
+        private static BlockPin? Selected { get; set; } = null;
+
         private readonly BlockRowBase _parent;
         private readonly Ellipse _child = new() { Stroke = Brushes.Gray, Fill = Brushes.White };
 
@@ -40,6 +42,12 @@ namespace RetailCorrector.Blueprint.Parts
             _child.Height = _child.Width = Height = Width = 10;
             _parent = parent;
             Children.Add(_child);
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            _child.Stroke = Brushes.Black;
+            Selected = this;
         }
     }
 }
