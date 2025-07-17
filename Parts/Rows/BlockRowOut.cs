@@ -7,7 +7,7 @@ namespace RetailCorrector.Blueprint.Parts.Rows
     internal class BlockRowOut : BlockRowBase
     {
         public string Title { get; }
-        public BlockRowIn? Connection { get; } = null;
+        public List<BlockRowIn> Endpoints { get; set; } = [];
         public string Value { get; set; } = "";
         public readonly BlockPin Pin;
 

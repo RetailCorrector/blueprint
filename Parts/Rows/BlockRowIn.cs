@@ -8,7 +8,7 @@ namespace RetailCorrector.Blueprint.Parts.Rows
     {
         public string Title { get; }
         private Type[] AllowedBlockTypes { get; }
-        public BlockRowOut? Connection { get; } = null;
+        public BlockRowOut? Endpoint { get; private set; } = null;
         public readonly BlockPin Pin;
 
         public BlockRowIn(string title, BlockBase block, params Type[] allowed): base(block)
