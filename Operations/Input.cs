@@ -23,7 +23,7 @@ namespace RetailCorrector.Blueprint.Operations
 
             Rows = [
                 new BlockRowCustom(_input, this),
-                new BlockRowOut("Вывод", this)
+                new BlockRowOut("Вывод", this, () => _input.Text)
             ];
             Draw();
         }
