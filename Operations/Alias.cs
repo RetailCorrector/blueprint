@@ -18,7 +18,7 @@ namespace RetailCorrector.Blueprint.Operations
 
             var @in = AddInRow(0,"Исходное");
             AddCustomRow(1, input);
-            AddOutRow(2, "Регистрация", () => $"({@in.Endpoint!.Value()}) AS {input.Text}");
+            AddOutRow(2, "Регистрация", () => $"({@in.Endpoint!.Value()}) AS \"{input.Text}\"");
             AddOutRow(3, "Название", () => input.Text);
 
             Draw();
