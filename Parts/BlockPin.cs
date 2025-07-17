@@ -11,6 +11,7 @@ namespace RetailCorrector.Blueprint.Parts
     internal class BlockPin : Canvas
     {
         private static BlockPin? Selected { get; set; } = null;
+        private bool IsInput => _parent is BlockRowIn;
 
         private readonly BlockRowBase _parent;
         private readonly Ellipse _child = new() { Stroke = Brushes.Gray, Fill = Brushes.White };
@@ -20,7 +21,7 @@ namespace RetailCorrector.Blueprint.Parts
             get
             {
                 var xBlock = _parent.Block.RenderTransform.Value.OffsetX;
-                return xBlock + (_parent is BlockRowIn ? 15 : _parent.Block.Width - 15);
+                return xBlock + (IsInput ? 15 : _parent.Block.Width - 15);
             }
         }
         public double Y
@@ -62,8 +63,8 @@ namespace RetailCorrector.Blueprint.Parts
                 Selected = null;
                 return;
             }
-            var @in = (BlockRowIn)(_parent is BlockRowIn ? _parent : Selected._parent);
-            var @out = (BlockRowOut)(_parent is BlockRowOut ? _parent : Selected._parent);
+            var @in = (BlockRowIn)(IsInput ? _parent : Selected._parent);
+            var @out = (BlockRowOut)(IsInput ? Selected._parent : _parent);
             @in.TryConnect(@out);
             Selected = null;
         }
